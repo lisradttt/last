@@ -1,8 +1,20 @@
 from config import API_ID, API_HASH, MONGO_DB_URL, user as user_dict, dev as dev_dict, call as call_dict, logger as logger_dict, logger_mode as logger_mode_dict, botname as botname_dict, GROUP as GROUPOWNER, CHANNEL as CHANNELOWNER, OWNER, OWNER_NAME
 from pymongo import MongoClient
 from pyrogram import Client, filters
-from pytgcalls import PyTgCalls
 from motor.motor_asyncio import AsyncIOMotorClient as _mongo_client_
+
+# استيراد PyTgCalls مع fallback
+try:
+    from pytgcalls import PyTgCalls
+except Exception as e:
+    print(f"[WARNING] PyTgCalls not available: {e}")
+    class PyTgCalls:
+        def __init__(self, *args, **kwargs):
+            pass
+        async def start(self):
+            pass
+        async def stop(self):
+            pass
 
 mo = MongoClient()
 mo = MongoClient(MONGO_DB_URL)

@@ -3,6 +3,10 @@ import asyncio
 import time
 import requests
 from datetime import datetime
+import os
+
+# تعطيل تحذيرات pytgcalls
+os.environ['PYTGCALLS_IGNORE_INVALID_OFFSETS'] = '1'
 
 # إصلاح شامل لـ Python 3.14 على Windows
 if sys.platform == 'win32':

@@ -10,13 +10,50 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from googletrans import Translator
-from pytgcalls import PyTgCalls, StreamType
-from pytgcalls.types import (
-    JoinedGroupCallParticipant, LeftGroupCallParticipant, Update,
-    AudioPiped, AudioVideoPiped, StreamAudioEnded,
-    HighQualityAudio, HighQualityVideo, LowQualityAudio,
-    LowQualityVideo, MediumQualityAudio, MediumQualityVideo
-)
+
+# استيراد PyTgCalls مع fallback
+try:
+    from pytgcalls import PyTgCalls, StreamType
+    from pytgcalls.types import (
+        Update, AudioPiped, AudioVideoPiped, StreamAudioEnded,
+        HighQualityAudio, HighQualityVideo, LowQualityAudio,
+        LowQualityVideo, MediumQualityAudio, MediumQualityVideo
+    )
+except Exception as e:
+    print(f"[WARNING] PyTgCalls import failed: {e}")
+    # Dummy implementations
+    class PyTgCalls:
+        def __init__(self, *args, **kwargs):
+            pass
+    class StreamType:
+        pass
+    class Update:
+        pass
+    class AudioPiped:
+        pass
+    class AudioVideoPiped:
+        pass
+    class StreamAudioEnded:
+        pass
+    class HighQualityAudio:
+        pass
+    class HighQualityVideo:
+        pass
+    class LowQualityAudio:
+        pass
+    class LowQualityVideo:
+        pass
+    class MediumQualityAudio:
+        pass
+    class MediumQualityVideo:
+        pass
+
+# Dummy classes for group call participants
+class JoinedGroupCallParticipant:
+    pass
+
+class LeftGroupCallParticipant:
+    pass
 
 from config import appp, OWNER, OWNER_NAME, VIDEO, API_ID, API_HASH, MONGO_DB_URL, user, dev, call, logger, logger_mode, botname, helper as ass
 from KERO.Data import get_data, get_call, get_app, get_userbot, get_group, get_channel, must_join

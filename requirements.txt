@@ -1,33 +1,38 @@
-wget
+# Telegram Bot Framework
+pyrogram>=2.0.0
 tgcrypto
-ffmpeg-python
-py-tgcalls==0.9.7
-telethon==1.28.2
-pyrogram
+
+# Voice Call Streaming
+py-tgcalls>=0.9.7
+
+# Session Generation
+telethon>=1.28.2
+
+# YouTube Integration
 youtube-search
 youtube-search-python
 yt-dlp
+
+# Async Database
+motor>=3.0
+pymongo>=4.0
+
+# Configuration
 python-dotenv
-dnspython
-gitpython
-asgiref
-asSQL
-numpy
-unidecode
-getids
+
+# Image Processing
+pillow>=10.0.0
 aiofiles
-dragonxxdlib
-getids
-SpeechRecognition
+
+# Translation
+googletrans
+
+# HTTP Requests
 aiohttp
 requests
-pillow==9.5.0
-heroku3
+
+# Utilities
+dnspython
 psutil
-future
-wget
-speedtest-cli
-motor
-pyromod~=1.5
-googletrans
 pytz
+asyncio-contextmanager

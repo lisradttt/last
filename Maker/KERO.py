@@ -5,12 +5,21 @@ from KERO.info import Call, activecall, helper, active
 from KERO.Data import db, dev, devname, set_must, get_data, get_channelsr, get_groupsr
 from pyrogram.raw.types import InputPeerChannel
 from pyrogram.raw.functions.phone import CreateGroupCall
-from pytgcalls import PyTgCalls
 from pymongo import MongoClient
 from motor.motor_asyncio import AsyncIOMotorClient as _mongo_client_
 from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, Message, ChatPrivileges
 from pyrogram.enums import ChatType
+
+# استيراد PyTgCalls مع fallback
+try:
+    from pytgcalls import PyTgCalls
+except Exception as e:
+    print(f"[WARNING] PyTgCalls not available: {e}")
+    class PyTgCalls:
+        def __init__(self, *args, **kwargs):
+            pass
+
 import asyncio, os, sys
 from os import system, execle, environ
 
